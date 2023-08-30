@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <title>Invoice</title>
+    <style>
+      table,
+      td,
+      th {
+        border: 2px solid black;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      td {
+        height: 40px;
+        vertical-align: center;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <table style="width: 100%; border: none">
+    <tr>
+      <td style="text-align: center; border: none; padding-right: 60px">
+        TAX INVOICE <%= data.name %>
+      </td>
+    </tr>
+  </table>
+</html>

@@ -1,0 +1,267 @@
+<html>
+  <head>
+    <title>Invoice</title>
+    <style>
+      table,
+      td,
+      th {
+        border: 2px solid black;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      td {
+        height: 40px;
+        vertical-align: center;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <table style="width: 100%; border: none">
+    <tr>
+      <td style="text-align: center; border: none; padding-right: 60px">
+        TAX INVOICE
+      </td>
+    </tr>
+  </table>
+  <table style="width: 100%">
+    <tr>
+      <th style="text-align: center; font-size: 40px">JANVI CREATION</th>
+    </tr>
+    <tr>
+      <table style="border-top: none; border-bottom: none">
+        <tr>
+          <td style="text-align: left; border: none; font-size: 15px">
+            All Type Embroidery<br />Thread & Jari
+          </td>
+          <td style="text-align: center; border: none; font-size: 15px">
+            163, surbhi vihar soc, puna bombay market road, Surat
+          </td>
+          <td style="text-align: right; border: none; font-size: 15px">
+            <i class="fa fa-whatsapp" style="font-size: 24px"></i> Mo: 99254
+            18821
+          </td>
+        </tr>
+      </table>
+    </tr>
+    <tr>
+      <table>
+        <tr>
+          <td>
+            <table style="border: none">
+              <tr rows>
+                <td style="border: none">
+                  <b
+                    >M/S: <%= customer.firmName %>, <%= customer.customerName
+                    %></b
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td style="border: none">Address: Surat</td>
+              </tr>
+              <tr>
+                <td style="border: none">GSTIN No: <%= customer.gstNo %></td>
+              </tr>
+            </table>
+          </td>
+          <td>
+            <table style="width: 100%; border: none">
+              <tr>
+                <td style="border: none">
+                  Invoice NO: &nbsp &nbsp &nbsp &nbsp <%= data.billNo %>
+                </td>
+              </tr>
+              <tr>
+                <td style="border: none">
+                  Date: &nbsp &nbsp &nbsp &nbsp <%= data.date %>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </tr>
+    <tr>
+      <table style="border-top: none; border-bottom: none">
+        <tr>
+          <th>SrNo</th>
+          <th>Product Name</th>
+          <th>HSN/CODE</th>
+          <th>Qty</th>
+          <th>Rate</th>
+          <th>GST %</th>
+          <th>Amount</th>
+        </tr>
+        <tr>
+          <td style="text-align: center">
+            1<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+          </td>
+          <td style="text-align: center">
+            <%= data.productName %><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+          </td>
+          <td style="text-align: center">
+            <%= data.productCode %><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+          </td>
+          <td style="text-align: center">
+            <%= data.quantity%><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+          </td>
+          <td style="text-align: center">
+            <%= data.rate %><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+          </td>
+          <td style="text-align: center">
+            12%<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+          </td>
+          <td style="text-align: center">
+            <%= data.subTotal %>
+            <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+          </td>
+        </tr>
+      </table>
+    </tr>
+    <tr>
+      <table style="border: none">
+        <td style="width: 65.1%; border-top: none; border-bottom: none">
+          GSTIN: 24A DPPL 2336 N1 Z7
+        </td>
+        <td
+          style="
+            border-top: none;
+            border-right: none;
+            border-top: none;
+            border-bottom: none;
+          "
+        >
+          <b>Sub Total:</b>
+        </td>
+        <td
+          style="
+            border-top: none;
+            border-left: none;
+            text-align: right;
+            border-bottom: none;
+          "
+        >
+          <b><%= data.subTotal %></b>
+        </td>
+      </table>
+    </tr>
+    <tr>
+      <table>
+        <tr>
+          <td style="width: 65.1%">
+            <table style="border: none">
+              <tr>
+                <td style="border: none">
+                  Bank Name: THE VARACHHA CO-OPERATIVE BANK LTD,SURAT
+                </td>
+              </tr>
+              <tr>
+                <td style="border: none">Bank A/c. No: 00730110470346</td>
+              </tr>
+              <tr>
+                <td style="border: none">RTGS/IFSC Code: VARA0289007</td>
+              </tr>
+              <tr>
+                <td>
+                  Total GST:
+                  <span style="text-transform: uppercase"
+                    ><%= gstWords %> RUPEES</span
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  BIll Amount:
+                  <span style="text-transform: uppercase"
+                    ><%= totalWords %> RUPEES</span
+                  >
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td>
+            <table style="border: none">
+              <tr>
+                <td style="border: none"><b>Total Amount Before Tax:</b></td>
+                <td style="border: none; text-align: right">
+                  <b><%= data.subTotal %></b>
+                </td>
+              </tr>
+              <tr>
+                <td style="border: none">CGST: <%= gstInPer%>%</td>
+                <td style="border: none; text-align: right">
+                  <%= data.cgst %>
+                </td>
+              </tr>
+              <tr>
+                <td style="border: none">SGST: <%= gstInPer%>%</td>
+                <td style="border: none; text-align: right">
+                  <%= data.sgst %>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </tr>
+    <tr>
+      <table style="border: none">
+        <tr>
+          <td style="width: 65.1%; border-top: none; border-bottom: none">
+            Note:
+          </td>
+          <td style="border: none">Total Amount After Tax:</td>
+          <td
+            style="
+              border-left: none;
+              border-top: none;
+              border-bottom: none;
+              text-align: right;
+            "
+          >
+            <b><%= data.total %></b>
+          </td>
+        </tr>
+      </table>
+    </tr>
+    <tr>
+      <table style="border: none">
+        <tr>
+          <td style="width: 70%; border-right: none">
+            <b style="font-size: 18px">Subject to SURAT Jurisdiction</b> <br />
+            <b>Terms & Conditions:</b> <br />
+            1. Goods Onoce Sold will Not be taken Back or Exchanged.<br />
+            2. We Reserve The Right of Recovery at any time Before due date.<br />
+            3. Our Risk & Resposibility Ceases as soon as the Goods Leava our
+            Godown.<br />
+            4. Interest @24% per annum Shall be charged if Amount not paid as
+            per term at the bill.<br />
+            &nbsp <br />
+            <b>
+              Checked by:................................................
+              E.&.O.E
+            </b>
+          </td>
+          <td style="border-left: none">
+            <b>&nbsp &nbsp &nbsp &nbsp For, JANVI CREATION</b>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <b>&nbsp &nbsp &nbsp &nbsp (Authorised Signatory)</b>
+          </td>
+        </tr>
+      </table>
+    </tr>
+  </table>
+</html>

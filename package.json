@@ -20,7 +20,6 @@
     "moment": "^2.29.4",
     "mongoose": "^7.0.5",
     "number-to-words": "^1.2.4",
-    "pdfkit": "^0.13.0",
     "puppeteer": "^21.1.1"
   }
 }

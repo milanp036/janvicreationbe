@@ -23,6 +23,6 @@
     "moment": "^2.29.4",
     "mongoose": "^7.0.5",
     "number-to-words": "^1.2.4",
-    "puppeteer": "21.0.3"
+    "html-pdf": "^3.0.1"
   }
 }

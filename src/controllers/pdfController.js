@@ -35,34 +35,34 @@ async function downloadFile(req, res) {
     gstInPer,
   });
 
-  // const browser = await puppeteer.launch({
-  //   headless: "new",
-  //   args: ["--no-sandbox"],
-  // });
-  // const page = await browser.newPage();
-  // await page.setContent(html);
-
-  // const pdfBuffer = await page.pdf({
-  //   format: "A4", // Page format
-  // });
-
-  // await browser.close();
-
-  // res.setHeader("Content-Type", "application/pdf");
-  // res.setHeader(
-  //   "Content-Disposition",
-  //   `attachment; filename=${customer.firmName}-${data.date}.pdf`
-  // );
-  // res.send(pdfBuffer);
-  pdf.create(html, options).toBuffer((err, buffer) => {
-    if (err) return console.error(err);
-    res.setHeader("Content-Type", "application/pdf");
-    res.setHeader(
-      "Content-Disposition",
-      `attachment; filename=${customer.firmName}-${data.date}.pdf`
-    );
-    res.send(buffer);
+  const browser = await puppeteer.launch({
+    headless: "new",
+    args: ["--no-sandbox"],
   });
+  const page = await browser.newPage();
+  await page.setContent(html);
+
+  const pdfBuffer = await page.pdf({
+    format: "A4", // Page format
+  });
+
+  await browser.close();
+
+  res.setHeader("Content-Type", "application/pdf");
+  res.setHeader(
+    "Content-Disposition",
+    `attachment; filename=${customer.firmName}-${data.date}.pdf`
+  );
+  res.send(pdfBuffer);
+  // pdf.create(html, options).toBuffer((err, buffer) => {
+  //   if (err) return console.error(err);
+  //   res.setHeader("Content-Type", "application/pdf");
+  //   res.setHeader(
+  //     "Content-Disposition",
+  //     `attachment; filename=${customer.firmName}-${data.date}.pdf`
+  //   );
+  //   res.send(buffer);
+  // });
 }
 
 module.exports = {

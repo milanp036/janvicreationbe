@@ -1,5 +1,5 @@
 const ejs = require("ejs");
-var pdf = require("html-pdf");
+const puppeteer = require("puppeteer");
 const path = require("path");
 const Customers = require("../models/Customer");
 const converter = require("number-to-words");
@@ -17,7 +17,7 @@ async function downloadFile(req, res) {
   data.subTotal = parseFloat(data.subTotal).toFixed(2);
   data.rate = parseFloat(data.rate).toFixed(2);
 
-  let gstInPer = parseFloat(data.gst / 2).toFixed(2);
+  let gstInPer = parseFloat(data.gstPercentage / 2).toFixed(2);
   let totalWords = converter.toWords(data.total);
   let word = Number(data.cgst) + Number(data.sgst);
   console.log("word, word", word);
@@ -34,15 +34,34 @@ async function downloadFile(req, res) {
     gstInPer,
   });
 
-  pdf.create(html, options).toBuffer((err, buffer) => {
-    if (err) return console.error(err);
-    res.setHeader("Content-Type", "application/pdf");
-    res.setHeader(
-      "Content-Disposition",
-      `attachment; filename=${customer.firmName}-${data.date}.pdf`
-    );
-    res.send(buffer);
+  const browser = await puppeteer.launch({
+    headless: "new",
+    args: ["--no-sandbox"],
   });
+  const page = await browser.newPage();
+  await page.setContent(html);
+
+  const pdfBuffer = await page.pdf({
+    format: "A4", // Page format
+  });
+
+  await browser.close();
+
+  res.setHeader("Content-Type", "application/pdf");
+  res.setHeader(
+    "Content-Disposition",
+    `attachment; filename=${customer.firmName}-${data.date}.pdf`
+  );
+  res.send(pdfBuffer);
+  // pdf.create(html, options).toBuffer((err, buffer) => {
+  //   if (err) return console.error(err);
+  //   res.setHeader("Content-Type", "application/pdf");
+  //   res.setHeader(
+  //     "Content-Disposition",
+  //     `attachment; filename=${customer.firmName}-${data.date}.pdf`
+  //   );
+  //   res.send(buffer);
+  // });
 }
 
 module.exports = {

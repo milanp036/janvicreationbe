@@ -1,5 +1,5 @@
 const ejs = require("ejs");
-// const puppeteer = require("puppeteer");
+const puppeteer = require("puppeteer");
 const path = require("path");
 const Customers = require("../models/Customer");
 const converter = require("number-to-words");

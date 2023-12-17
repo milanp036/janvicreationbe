@@ -4,7 +4,6 @@ const path = require("path");
 const Customers = require("../models/Customer");
 const converter = require("number-to-words");
 const moment = require("moment");
-var pdf = require("html-pdf");
 
 async function downloadFile(req, res) {
   console.log("req", req.body);

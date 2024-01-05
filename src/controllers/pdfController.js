@@ -43,7 +43,11 @@ async function downloadFile(req, res) {
     await page.setContent(html);
 
     const pdfBuffer = await page.pdf({
-      format: "A4", // Page format
+      format: "a4", // Page format
+      margin: {
+        right: "1cm",
+        left: "1cm",
+      },
     });
 
     await browser.close();
